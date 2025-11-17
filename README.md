@@ -96,5 +96,3 @@
   - Unit tests
   - Migration to JavaFX or Spring Boot
 
- 
-  _Generated and formatted per your request._
