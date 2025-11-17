@@ -1,0 +1,6 @@
+Exam System/lib/*.jar 
+Exam System/bin/ 
+*.class 
+/.idea/ 
+/.vscode/ 
+target/ 
