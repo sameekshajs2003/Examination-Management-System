@@ -1,135 +1,110 @@
-**Project Overview**
+# 🎓 Examination Management System
 
-This is a desktop Exam Management System implemented in Java. It demonstrates a full-stack skillset: a Swing-based GUI client, a JDBC-backed model connecting to a MySQL database, and a controller layer that binds UI to data and business logic.
+  A desktop-based exam scheduling and result management application built using Java, Swing (GUI), and MySQL.
 
-**Tech Stack**
+  ## 🚀 Features
 
-- **Language**: Java (SE) — Swing for desktop UI.
-- **GUI**: `javax.swing`, `java.awt`.
-- **Database**: MySQL accessed via JDBC (`com.mysql.cj.jdbc.Driver`).
-- **Build / Run**: Plain Java (no Maven/Gradle present). Compile with `javac` or run from an IDE.
+  - 🔐 Login & Signup (Student + Teacher)
+  - 👨‍🏫 Teacher Panel
+    - Create class groups
+    - Add students to groups
+    - Schedule exams
+    - Publish exam results
+  - 🎓 Student Panel
+    - Register for available exams
+    - View scheduled exams
+    - View exam results
+  - 🗄️ MySQL Database Integration
+  - 🧩 MVC Architecture
 
-**Architecture**
+  ## ⚙️ Design Patterns Used
 
-- **Pattern**: MVC (Model — `model.UserModel`, Controller — `controller.*`, View — `view.*`).
-- **Entry point**: `view.LoginView` (`LoginView.main`).
+  - **Strategy** — Password Change (`PasswordChangeStrategy`)
+  - **Proxy** — Exam Registration Permission (`ExamRegistrationProxy`)
+  - **Factory** - UI View Creation (`WelxomeViewFactory`)
 
-**Design Patterns Used**
+  ## 🛠️ Tech Stack
 
-- **Strategy**: `PasswordChangeStrategy` with `StudentPasswordChangeStrategy` and `TeacherPasswordChangeStrategy`.
-- **Proxy**: `ExamRegistrationProxy` wrapping `RealExamRegistration`.
+  | Layer        | Technology |
+  |--------------|------------|
+  | Frontend     | Java Swing |
+  | Backend      | Java (JDK 8+) |
+  | Database     | MySQL |
+  | Data Access  | JDBC |
+  | Architecture | MVC |
 
-**Database design (quick reference)**
+  ## 📁 Project Structure
 
-- The app connects to database `exam` on `localhost` using JDBC. The code expects tables such as `Students`, `Teachers`, `Classgroup`, `GroupStudents`, `Exams`, `ExamResults`, and `RegisteredExams`.
-- On student registration the app creates a per-student table named by the student's SRN to store that student's individual exam records.
+  ```
+  Examination-Management-System/
+  │
+  ├── src/
+  │   ├── controller/     # Controllers – business logic
+  │   ├── model/          # JDBC database models
+  │   └── view/           # Swing GUI screens
+  │
+  ├── db/
+  │   └── init.sql        # Database schema (run this first)
+  │
+  ├── Exam System/lib/
+  │   └── README.md       # Notes for JDBC driver (if needed)
+  │
+  ├── pom.xml             # Maven build file
+  └── README.md           # Project documentation
+  ```
 
-Example minimal SQL to create the expected schema (adapt types and constraints as needed):
+  ## 🧰 Installation & Setup
 
-```sql
-CREATE DATABASE exam;
-USE exam;
+  1. Clone the Repository
 
-CREATE TABLE Students (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  srn VARCHAR(50) UNIQUE,
-  username VARCHAR(100),
-  password VARCHAR(100),
-  dept VARCHAR(100),
-  sem VARCHAR(10)
-);
+  ```bash
+  git clone https://github.com/sameekshajs2003/Examination-Management-System.git
+  cd Examination-Management-System
+  ```
 
-CREATE TABLE Teachers (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  irn VARCHAR(50) UNIQUE,
-  username VARCHAR(100),
-  password VARCHAR(100),
-  depti VARCHAR(100),
-  sub VARCHAR(100)
-);
+  2. Create the Database
 
-CREATE TABLE Classgroup (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  group_name VARCHAR(100),
-  instructor_id VARCHAR(50)
-);
+  Run (from the MySQL client):
 
-CREATE TABLE GroupStudents (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  group_id INT,
-  student_srn VARCHAR(50)
-);
+  ```sql
+  SOURCE db/init.sql;
+  ```
 
-CREATE TABLE Exams (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  subject VARCHAR(255),
-  type VARCHAR(50),
-  date_scheduled DATE,
-  duration INT,
-  total_marks INT,
-  groupname VARCHAR(100)
-);
+  3. Configure MySQL Credentials
 
-CREATE TABLE ExamResults (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  group_name VARCHAR(100),
-  student_srn VARCHAR(50),
-  exam_subject VARCHAR(255),
-  exam_type VARCHAR(50),
-  exam_date DATE,
-  marks INT,
-  review VARCHAR(255)
-);
+  Update your DB username & password in:
 
-CREATE TABLE RegisteredExams (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  exam_name VARCHAR(255),
-  exam_date DATE,
-  student_srn VARCHAR(50)
-);
-```
+  ```
+  src/model/UserModel.java
+  ```
 
-**How to run (Windows `cmd`)**
+  4. Build & Run
 
-1. Install JDK (Java 11+ recommended) and MySQL server.
-2. Place MySQL Connector/J JAR into a `lib` folder under the project (example: `Exam System\lib\mysql-connector-java-8.0.33.jar`).
-3. Adjust DB credentials in `model/UserModel.java` (default in code: user `root`, password `Samijs@7`) or create a matching MySQL user.
-4. Compile the sources and run `LoginView`:
+  ```bash
+  mvn clean package
+  mvn exec:java -Dexec.mainClass="view.LoginView"
+  ```
 
-```bat
-cd "Exam System"
-javac -d bin -cp "lib\mysql-connector-java-8.0.33.jar" src\controller\*.java src\model\*.java src\view\*.java
-java -cp "bin;lib\mysql-connector-java-8.0.33.jar" view.LoginView
-```
+  ## 🖥️ Screenshots 
 
-Or: import the project into an IDE (IntelliJ/Eclipse/NetBeans), add the JDBC driver to the project libraries, then run `view.LoginView`.
+  - [<img width="891" height="439" alt="image" src="https://github.com/user-attachments/assets/6d4d4193-bf50-426f-8873-d1c9d1a68aeb" />
+ ] Login Page
+  - [ <img width="890" height="384" alt="image" src="https://github.com/user-attachments/assets/5f1a5d1e-8ff1-4ab9-aa75-fbd46b04c812" />
+] SignUp Page 
+  - [<img width="891" height="503" alt="image" src="https://github.com/user-attachments/assets/25129b58-3157-48f9-af5b-5f98d39867ea" />
+ ] Student Dashboard  
+  - [<img width="891" height="529" alt="image" src="https://github.com/user-attachments/assets/0ba7ca19-5c16-46da-a0c1-f6cfb79c5570" />
+ ] Teacher Dashboard  
+  - [ <img width="891" height="614" alt="image" src="https://github.com/user-attachments/assets/455be152-a886-4608-9856-e75b2f6419d0" />
+] Exam Scheduling  
 
-**Security & maintenance notes**
+  ## 📌 Future Improvements
 
-- Passwords are stored in plaintext in the database — replace with hashed passwords (bcrypt/Argon2) for production.
-- Remove hard-coded DB credentials; use configuration files or environment variables.
-- Consider using a build tool (Maven/Gradle) to manage dependencies like the JDBC driver.
+  - Password hashing
+  - Role-based authorization
+  - Better UI/UX
+  - Unit tests
+  - Migration to JavaFX or Spring Boot
 
-**Next steps & suggestions**
-
-- Add a `pom.xml` or `build.gradle` so the project can be built reproducibly and the JDBC driver is managed automatically. I can generate a starter `pom.xml` if you want.
-- Consider refactoring the persistence layer to use connection pooling and prepared-statement management, or migrate to JPA/Spring Data if moving to a server-backed web app.
-- Improve input validation and exception handling in `UserModel` and controllers.
-
-**What this demonstrates**
-
-- Full-stack skills: Java frontend (Swing), application logic (Controller), persistence (JDBC + MySQL).
-- Architecture understanding: clean separation of Model, View, Controller.
-- Use of design patterns: Strategy and Proxy are implemented and used.
-- Database design: normalized tables for users, groups, exams, and per-student result tables.
-- A complete runnable application: `view.LoginView` serves as the GUI entry point.
-
-If you'd like, I can now:
-
-- generate a `pom.xml` and convert the project to Maven, or
-- produce a short `README` inside `Exam System\lib` explaining where to put the JDBC driver, or
-- create a quick starter SQL file `db/init.sql` with the schema above.
-
----
-
-Generated by your assistant — tell me which next step you'd like.
+ 
+  _Generated and formatted per your request._
