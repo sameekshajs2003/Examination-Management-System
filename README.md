@@ -86,17 +86,7 @@
   ```
 
   ## 🖥️ Screenshots 
-
-  - [<img width="891" height="439" alt="image" src="https://github.com/user-attachments/assets/6d4d4193-bf50-426f-8873-d1c9d1a68aeb" />
- ] Login Page
-  - [ <img width="890" height="384" alt="image" src="https://github.com/user-attachments/assets/5f1a5d1e-8ff1-4ab9-aa75-fbd46b04c812" />
-] SignUp Page 
-  - [<img width="891" height="503" alt="image" src="https://github.com/user-attachments/assets/25129b58-3157-48f9-af5b-5f98d39867ea" />
- ] Student Dashboard  
-  - [<img width="891" height="529" alt="image" src="https://github.com/user-attachments/assets/0ba7ca19-5c16-46da-a0c1-f6cfb79c5570" />
- ] Teacher Dashboard  
-  - [ <img width="891" height="614" alt="image" src="https://github.com/user-attachments/assets/455be152-a886-4608-9856-e75b2f6419d0" />
-] Exam Scheduling  
+<table> <tr> <td align="center"><b>Login Page</b><br> <img src="https://github.com/user-attachments/assets/6d4d4193-bf50-426f-8873-d1c9d1a68aeb" width="420"> </td> <td align="center"><b>Sign Up Page</b><br> <img src="https://github.com/user-attachments/assets/5f1a5d1e-8ff1-4ab9-aa75-fbd46b04c812" width="420"> </td> </tr> <tr> <td align="center"><b>Student Dashboard</b><br> <img src="https://github.com/user-attachments/assets/25129b58-3157-48f9-af5b-5f98d39867ea" width="420"> </td> <td align="center"><b>Teacher Dashboard</b><br> <img src="https://github.com/user-attachments/assets/0ba7ca19-5c16-46da-a0c1-f6cfb79c5570" width="420"> </td> </tr> <tr> <td align="center"><b>Exam Scheduling</b><br> <img src="https://github.com/user-attachments/assets/455be152-a886-4608-9856-e75b2f6419d0" width="420"> </td> </tr> </table>
 
   ## 📌 Future Improvements
 
