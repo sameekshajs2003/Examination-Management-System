@@ -58,7 +58,7 @@
   1. Clone the Repository
 
   ```bash
-  git clone https://github.com/sameekshajs2003/Examination-Management-System.git
+  git clone <your-repo-url>
   cd Examination-Management-System
   ```
 
